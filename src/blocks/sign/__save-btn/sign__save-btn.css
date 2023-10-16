@@ -1,0 +1,15 @@
+.sign__save-btn {
+    width: 100%;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    margin-top: 186px;
+    padding: 14px 0 14px 0;
+    background: white;
+    color: #000;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5 linear;
+}

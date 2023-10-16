@@ -1,0 +1,4 @@
+.element__like-btn_active {
+    background-image: url(../../../../images/Union.svg);
+    color: #000;
+}
