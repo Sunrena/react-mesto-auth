@@ -57,20 +57,6 @@ function App() {
     }
   }, [loggedIn]);
 
-
-  /*useEffect(() => {
-    api.getUserInfoApi().then((data) => {
-      setCurrentUser(data);
-    })
-    .catch((error) => console.log(error));
-  }, []);
-
-  useEffect(() => {
-    api.getInitialCardsApi().then((data) => {setCards(data);
-    })
-    .catch((error) => console.log(error));
-  }, []);*/
-
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
   }

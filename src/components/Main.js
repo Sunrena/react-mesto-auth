@@ -30,9 +30,10 @@ export default function Main({
             <button className="profile__avatar-btn" 
               type="button"
               onClick={onEditAvatar}>
-              <img className="profile__avatar" 
+              <img className="profile__avatar-image" 
                 alt={currentUser.name} 
                 src={currentUser.avatar} />
+              <div className="profile__avatar"></div>
             </button>            
             <div className="profile__info">
               <h1 className="profile__title">{currentUser.name}</h1>

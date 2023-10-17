@@ -19,6 +19,7 @@
 @import url(../blocks/profile/__edit-btn/profile__edit-btn.css);
 @import url(../blocks/profile/__add-btn/profile__add-btn.css);
 @import url(../blocks/profile/__avatar-btn/profile__avatar-btn.css);
+@import url(../blocks/profile/__avatar-image/profile__avatar-image.css);
 
 /**Блок elements — карточки/посты **/
 @import url(../blocks/elements/elements.css);
