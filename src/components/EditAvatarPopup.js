@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 export default function EditAvatarPopup({
@@ -11,7 +11,7 @@ export default function EditAvatarPopup({
 
     const inputAvatarRef = useRef(0);
 
-    React.useEffect(() => {
+    useEffect(() => {
         isOpen && (inputAvatarRef.current.value = '');
     }, [isOpen]);
 
@@ -20,8 +20,9 @@ export default function EditAvatarPopup({
         onUpdateAvatar({
             avatar: inputAvatarRef.current.value,
         });
+      
+      
     }
-    
 
     return (
         <PopupWithForm
@@ -38,7 +39,8 @@ export default function EditAvatarPopup({
               placeholder="Ссылка на аватар"
               name="avatar"
               ref={inputAvatarRef}              
-              required />
+              required
+               />
             <span className="popup__error avatar-error"></span>
           </fieldset>
         </PopupWithForm>
