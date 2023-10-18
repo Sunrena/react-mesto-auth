@@ -20,9 +20,6 @@ export default function EditAvatarPopup({
         onUpdateAvatar({
             avatar: inputAvatarRef.current.value,
         });
-      
-        const avatar = document.querySelector('.popup__item_type_avatar');
-        console.log(avatar.value);
     }
 
     return (

@@ -1,13 +1,15 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import { usePopupClose } from "../hooks/usePopupClose";
 
 export default function ConfirmPopup({
     isOpen,
     onClose,
     onConfirm,
-    isLoading,
-    handleCloseOverlay,
+    isLoading,    
 }) {
+
+    usePopupClose(isOpen, onClose);
 
     function handleSubmit(evt) {
         evt.preventDefault();    
@@ -21,6 +23,6 @@ export default function ConfirmPopup({
           isOpen={isOpen}
           onClose={onClose}
           onSubmit={handleSubmit}
-          handleCloseOverlay={handleCloseOverlay} />
+           />
     )
 }

@@ -32,7 +32,8 @@ function App() {
   
   const navigate = useNavigate();
 
-  const [isSuccess, setIsSuccess] = useState();
+  const [isSuccess, setIsSuccess] = useState(false);
+
   const [valueRegister, setValueRegister] = useState({
     email: '',
     password: '',
@@ -41,19 +42,13 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      api.getUserInfoApi().then((data) => {
-        setCurrentUser(data);
-      })
-      .catch((error) => console.log(error));
+      api.getUserInfoApi().then(setCurrentUser).catch(console.error);
     }
   }, [loggedIn]);
 
   useEffect(() => {
     if (loggedIn) {
-      api.getInitialCardsApi().then((data) => {
-        setCards(data);
-      })
-      .catch((error) => console.log(error));
+      api.getInitialCardsApi().then(setCards).catch(console.error);
     }
   }, [loggedIn]);
 
@@ -145,12 +140,6 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  function handleCloseOverlay(evt) {
-    if (evt.target.classList.contains('.popup_opened')) {
-      closeAllPopups();
-    }
-  }
-
   function openInfoToolTip() {
     setIsInfoToolTipOpen(true);
   }
@@ -161,7 +150,6 @@ function App() {
       console.log(res);
       if (res) {
         setIsSuccess(true);
-        openInfoToolTip();
         navigate("/sign-in", { replace: true });
         setValueRegister({});
       }
@@ -169,8 +157,8 @@ function App() {
     .catch((err) => {
       console.log(err);
       setIsSuccess(false);
-      openInfoToolTip();
-    });
+    })
+    .finally(() => openInfoToolTip());
   }
 
   const handleLogin = (bool) => {
@@ -260,7 +248,6 @@ function App() {
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
           isLoading={isLoading}
-          handleCloseOverlay={handleCloseOverlay}
           />
 
         <EditProfilePopup 
@@ -268,30 +255,24 @@ function App() {
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
           isLoading={isLoading}
-          handleCloseOverlay={handleCloseOverlay}
            />
 
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen} 
           onClose={closeAllPopups}
           onAddPlace={handleAddPlaceSubmit}
-          isLoading={isLoading}
-          handleCloseOverlay={handleCloseOverlay}
-
-          />
+          isLoading={isLoading} />
 
         <ImagePopup
           card={selectedCard}
           isOpen={isImagePopupOpen}
-          onClose={closeAllPopups}
-          handleCloseOverlay={handleCloseOverlay} />
+          onClose={closeAllPopups} />
 
         <ConfirmPopup
           isOpen={isConfirmPopupOpen}
           onClose={closeAllPopups}
           onConfirm={handleCardDelete}
-          isLoading={isLoading}
-          handleCloseOverlay={handleCloseOverlay} />
+          isLoading={isLoading}/>
 
           <InfoTooltip
             name="info-tool-tip"
@@ -300,9 +281,7 @@ function App() {
               isSuccess ? "Вы успешно зарегистрировались!" : "Что-то пошло не так! Попробуйте ещё раз."
               }
               isOpen={isInfoToolTipOpen}
-              onClose={closeAllPopups}
-              handleCloseOverlay={handleCloseOverlay}
-              />            
+              onClose={closeAllPopups}/>            
        
       </div>
     </CurrentUserContext.Provider>

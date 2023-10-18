@@ -25,7 +25,6 @@ export default function Card({ card, onCardClick, onCardDelete, onCardLike }) {
 
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
       <div className="element">
         <button className={`element__trash ${isOwn ? 'element__trash_active' : ''}`}          
           type="button"
@@ -44,6 +43,5 @@ export default function Card({ card, onCardClick, onCardDelete, onCardLike }) {
           </div>
         </div>
       </div>
-    </CurrentUserContext.Provider>
   )
 }
